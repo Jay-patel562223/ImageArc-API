@@ -1,0 +1,90 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/admin",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Login"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/LoginSuccess"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+      "Login": {
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "value":"admin@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "value":"123"
+          }
+        
+      },
+      "LoginSuccess":{
+        "required": ["user_id", "user"],
+        "properties": {
+          "user_id": {
+            "type": "object"
+          },
+          "user": {
+            "type": "object"
+          },
+          "token": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "message":{
+            "type": "string"
+          }
+        }
+      },
+      "Users": {
+        "type": "array",
+        "$ref": "#/definitions/Login"
+      }
+    }
+  }
+}

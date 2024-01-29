@@ -1,0 +1,387 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<head>
+	<style type="text/css">
+		body{
+			width: 1200px;
+			margin: 0;
+			padding: 0px;
+			font-size: 16px;
+			line-height: 24px;
+			font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			color: rgb(33,33,33);
+		}
+		.report-header{
+			width: 90%;
+			padding: 15px;
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+		}
+		
+		.report-footer{
+			width: 90%;
+			padding: 15px;
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+			text-align-last: center;
+		}
+		.report-body{
+			width: 90%;
+			display: inline-block;
+			position: relative;
+			padding: 15px;
+			box-sizing: border-box;
+			vertical-align: top;
+		}
+		
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			text-align: left;
+			padding: 8px;
+		}
+
+		#bloc1, #bloc2
+		{
+			display:inline;
+		}
+		
+	</style>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+
+	<div class="report-header block_container">
+		<h1 style="text-align: center;">INVOICE</h1>
+		<p id="bloc1" style="float: left;">Order ID: {{order._id}}</p>
+		<p id="bloc2" style="float: right;">Date: {{order.created_at}}</p><br>
+	</div>
+	<div class="report-header block_container" style="float: left;">
+		<p >Payment Method: {{order.payment_gateway}}</p>
+	</div>
+	<div class="report-body">
+		<table style="text-align: right;">
+			<thead style="background-color: #f7f8f9;">
+				<tr>
+					<th style="text-align: center">Products</th>
+					<th style="text-align: center">Total</th>
+				</tr>
+			</thead>
+			<tbody >
+			{{#each data}}
+				<tr>
+					<td style="text-align: center">{{this.name}} x {{this.unit}}</td>
+					<td style="text-align: center">{{this.currency}}{{this.unit_price}}</td>
+				</tr>
+			{{/each}}
+
+				<tr>
+					<td > </td>
+					<td>
+						<table >
+							<tr>
+								<td style="text-align: right">Sub total</td>
+								<td style="text-align: right">{{getCurrency.currency}}{{totalPriceNew}}</td>
+							</tr>
+							<tr>
+								<td style="text-align: right">Tax</td>
+								<td style="text-align: right">{{getCurrency.currency}}0</td>
+							</tr>
+							<hr>
+							<hr>
+							<tr>
+								<td style="text-align: right"><b> Total</b></td>
+								<td style="text-align: right"><b>{{getCurrency.currency}}{{totalPriceNew}}</b></td>
+							</tr>
+							<tr>
+								<td style="text-align: right"><b>Payble Amount</b></td>
+								<td style="text-align: right"><b>{{getCurrency.currency}}{{order.total}}</b></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="report-footer " style="text-align: center;">
+		IMAGE ARC - All Rights reserved.
+	</div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
+  <style>
+    
+   .invoice {
+  max-width: 800px;
+  margin: 0 auto;
+  /*border: 1px solid #ccc;*/
+  /*padding: 20px;*/
+}
+
+.invoice-header {
+  margin-bottom: 20px;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between; */
+  background-color: #03354E;
+  align-items: center;
+  padding: 50px;
+
+  display: table;
+    width: 88%;
+
+}
+
+.invoice-headlt h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.invoice-headlt{
+  display: table-cell;
+}
+
+.invoice-headrt{
+  display: table-cell;
+    float: right;
+}
+
+.invoice-headrt img{
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  object-fit: cover;
+}
+
+.invoice-info {
+  padding: 38px 50px;
+}
+
+.order-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px dashed #C2C1C1;
+}
+
+.order-details-lt p {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 1px;
+  color: #000000;
+  margin-bottom: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.order-details-rt {
+  text-align: right;
+}
+
+.order-details-lt p span {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.order-details-rt label {
+  color: #AEAEAE;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.order-details-rt p {
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 45px;
+  letter-spacing: 1px;
+  line-height: 50px;
+  margin: 0px;
+}
+
+tbody {
+  border-bottom: 1px dashed #C2C1C1;
+}
+
+tfoot {
+  float: right;
+  width: 27%;
+  float: right;
+  margin-top: 30px;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.one {
+  min-width: 200px;
+}
+
+.main-pr {
+  min-width: 200px;
+
+}
+
+.invoice-details {
+  margin-bottom: 20px;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 8px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+.invoice-table th {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.invoice-table td {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.invoice-table th {}
+
+.invoice-total {
+  text-align: right;
+
+}
+
+.footer {
+  background-color: #03354E;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-lt p,
+.footer-rt p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+
+}
+    
+</style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div class="main">
+    <div class="invoice">
+      <div class="invoice-header">
+        <div class="invoice-headlt">
+          <h1>Invoice</h1>
+        </div>
+        <div class="invoice-headrt"><img alt="logo" src="{{image}}"></div>
+        <!-- <div class="invoice-headrt"><img alt="logo" src="image/logo.png"></div> -->
+      </div>
+      <div class="invoice-info">
+        <div class="order-details">
+          <div class="order-details-lt">
+            <p><span>Order ID:</span> {{order.unique_id}}</p>
+            <p><span>Payment Method:</span> {{order.payment_gateway}}</p>
+          </div>
+          <div class="order-details-rt">
+            <label>Invoice total:</label>
+            <p>{{getCurrency.currency}}{{order.total}}</p>
+          </div>
+        </div>
+        <table class="invoice-table">
+          <thead>
+            <tr>
+              <th colspan="1">Products</th>
+              <th class="text-right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+			{{#each data}}
+            <tr>
+              <td colspan="1">{{this.name}} x {{this.unit}}</td>
+              <td class="text-right">{{this.currency}}{{this.unit_price}}</td>
+            </tr>
+			{{/each}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="one right-cell" colspan="2">Subtotal:</td>
+              <td class="right-cell text-right">{{getCurrency.currency}}{{totalPriceNew}}</td>
+            </tr>
+            <tr>
+              <td class="right-cell" colspan="2">Tax:</td>
+              <td class="right-cell text-right">{{getCurrency.currency}}{{tax}}</td>
+            </tr>
+            <tr>
+              <td class="right-cell" colspan="2">Total:</td>
+              <td class="right-cell text-right">{{getCurrency.currency}}{{totalPriceNew}}</td>
+            </tr>
+            <tr>
+              <td class="right-cell" colspan="2"><b>Payble amount:</b></td>
+              <td class="right-cell text-right"><b>{{getCurrency.currency}}{{order.total}}</b></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="footer">
+        <div class="footer-lt">
+          <p>IMAGE ARC - All Rights reserved.</p>
+        </div>
+        <div class="footer-rt">
+          <p>Date: {{order.created_at}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+</body>
+</html>

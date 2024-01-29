@@ -1,0 +1,1942 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IMAGE ARC ADMIN",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/"
+        },
+        {
+            "url": "http://52.69.195.65:3000/"
+        }
+    ],
+    "tags": [
+        {
+        "name": "User Management"
+        },
+        {
+        "name": "Category Management"
+        },
+        {
+        "name": "Page"
+        },
+        {
+        "name": "Product"
+        },
+        {
+        "name": "Product Prices"
+        },
+        {
+        "name": "Country"
+        },
+        {
+        "name": "State"
+        },
+        {
+        "name": "Package Type"
+        },
+        {
+        "name": "Subscription Package"
+        }
+    ],
+    "paths": {
+        "/api/admin/users": {
+        "get": {
+            "tags": [
+            "User Management"
+            ],
+            "summary": "Get all users",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "User Management"
+            ],
+            "summary": "create user",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "last_name": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "test1@mailinator.com"
+                    },
+                    "password": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "mobile_no": {
+                        "type": "integer",
+                        "example": "12312312311"
+                    },
+                    "country": {
+                        "type": "string",
+                        "example": "{\"states\":[],\"status\":\"active\",\"_id\":\"63c0f4afd1bee19ba7ea2601\",\"country\":\"Angola\"}"
+                    },
+                    "state": {
+                        "type": "string",
+                        "example": "{\"status\":\"active\",\"_id\":\"63c6776b4774f8c0a92f99ae\",\"country_id\":\"63c0f4afd1bee19ba7ea2601\",\"states\":\"Cabinda\",\"__v\":0}"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/users/{id}": {
+        "get": {
+            "tags": [
+            "User Management"
+            ],
+            "summary": "delete user",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "put": {
+            "tags": [
+            "User Management"
+            ],
+            "summary": "update user",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "last_name": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "test1@mailinator.com"
+                    },
+                    "password": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "mobile_no": {
+                        "type": "integer",
+                        "example": "12312312311"
+                    },
+                    "country": {
+                        "type": "string",
+                        "example": "{\"states\":[],\"status\":\"active\",\"_id\":\"63c0f4afd1bee19ba7ea2601\",\"country\":\"Angola\"}"
+                    },
+                    "state": {
+                        "type": "string",
+                        "example": "{\"status\":\"active\",\"_id\":\"63c6776b4774f8c0a92f99ae\",\"country_id\":\"63c0f4afd1bee19ba7ea2601\",\"states\":\"Cabinda\",\"__v\":0}"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/category": {
+        "get": {
+            "tags": [
+            "Category Management"
+            ],
+            "summary": "get all category",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Category Management"
+            ],
+            "summary": "create category",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    },
+                    "description": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/category/{id}": {
+        "get": {
+            "tags": [
+            "Category Management"
+            ],
+            "summary": "show category by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Category Management"
+            ],
+            "summary": "delete category",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/category/{id}": {
+        "put": {
+            "tags": [
+            "Category Management"
+            ],
+            "summary": "update category",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    },
+                    "description": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/page": {
+        "get": {
+            "tags": [
+            "Page"
+            ],
+            "summary": "get all static pages",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Page"
+            ],
+            "summary": "create static page",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "title": {
+                        "type": "integer",
+                        "example": "12311"
+                    },
+                    "slug": {
+                        "type": "integer",
+                        "example": "12311"
+                    },
+                    "body_content": {
+                        "type": "string",
+                        "example": "\n<section>\n  <nav>\n    <ul>\n      <li><a href=\"#\">London</a></li>\n      <li><a href=\"#\">Paris</a></li>\n      <li><a href=\"#\">Tokyo</a></li>\n    </ul>\n  </nav>\n  \n  <article>\n    <h1>London</h1>\n    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>\n    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>\n  </article>\n</section>\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/page/{slug}": {
+        "get": {
+            "tags": [
+            "Page"
+            ],
+            "summary": "show static page by slug",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "slug",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/page/{id}": {
+        "put": {
+            "tags": [
+            "Page"
+            ],
+            "summary": "update static page",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "title": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "slug": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "body_content": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Page"
+            ],
+            "summary": "Delete Page",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/product": {
+        "get": {
+            "tags": [
+            "Product"
+            ],
+            "summary": "Get all products",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Product"
+            ],
+            "summary": "Create Product",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "example": "['123']"
+                    },
+                    "categories[]": {
+                        "type": "string",
+                        "example": "[ {\n            \"status\": \"active\",\n            \"_id\": \"63b2b3239a49d67d442e349e\",\n            \"is_active\": true,\n            \"name\": \"Trousers and shorts\",\n            \"description\": \"<p>Trousers and shorts</p>\",\n            \"image\": \"http://localhost:3000/category/Toronto_Skyline_Summer_2020.jpg\",\n            \"__v\": 0\n        }]"
+                    },
+                    "product_status": {
+                        "type": "string",
+                        "description": "approved, pending",
+                        "example": "approved"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/product/{id}": {
+        "put": {
+            "tags": [
+            "Product"
+            ],
+            "summary": "Update Product",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "tag": {
+                        "type": "string",
+                        "example": "['123']"
+                    },
+                    "categories[]": {
+                        "type": "string",
+                        "example": "[ {\n            \"status\": \"active\",\n            \"_id\": \"63b2b3239a49d67d442e349e\",\n            \"is_active\": true,\n            \"name\": \"Trousers and shorts\",\n            \"description\": \"<p>Trousers and shorts</p>\",\n            \"image\": \"http://localhost:3000/category/Toronto_Skyline_Summer_2020.jpg\",\n            \"__v\": 0\n        }]"
+                    },
+                    "image": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    },
+                    "product_status": {
+                        "type": "string",
+                        "description": "approved, pending",
+                        "example": "approved"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "get": {
+            "tags": [
+            "Product"
+            ],
+            "summary": "Get Product By Id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Product"
+            ],
+            "summary": "Delete Product",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/product-prices": {
+        "post": {
+            "tags": [
+            "Product Prices"
+            ],
+            "summary": "Create product prices",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "get": {
+            "tags": [
+            "Product Prices"
+            ],
+            "summary": "Get all product prices",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/product-prices/{id}": {
+        "put": {
+            "tags": [
+            "Product Prices"
+            ],
+            "summary": "Update product prices",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "active, inactive",
+                        "example": "active"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "get": {
+            "tags": [
+            "Product Prices"
+            ],
+            "summary": "Get product price by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Product Prices"
+            ],
+            "summary": "Delete product prices",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/countries": {
+        "get": {
+            "tags": [
+            "Country"
+            ],
+            "summary": "Get all countries",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Country"
+            ],
+            "summary": "Create country",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "country": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/countries/{id}": {
+        "get": {
+            "tags": [
+            "Country"
+            ],
+            "summary": "Get country by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "put": {
+            "tags": [
+            "Country"
+            ],
+            "summary": "Update Country",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "country": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Country"
+            ],
+            "summary": "Delete country",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/user/state_country/{id}": {
+        "get": {
+            "tags": [
+            "Country"
+            ],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": "123"
+                }
+            ],
+            "summary": "Get states by country id",
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/states": {
+        "get": {
+            "tags": [
+            "State"
+            ],
+            "summary": "Get all states",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "State"
+            ],
+            "summary": "Create state",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "country_id": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "states": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/states/{id}": {
+        "get": {
+            "tags": [
+            "State"
+            ],
+            "summary": "Get state by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "put": {
+            "tags": [
+            "State"
+            ],
+            "summary": "Update state",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "country_id": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "states": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "State"
+            ],
+            "summary": "Delete state",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/package_type": {
+        "get": {
+            "tags": [
+            "Package Type"
+            ],
+            "summary": "Get all package type",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Package Type"
+            ],
+            "summary": "Create package type",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/package_type/{id}": {
+        "get": {
+            "tags": [
+            "Package Type"
+            ],
+            "summary": "Get package type by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "put": {
+            "tags": [
+            "Package Type"
+            ],
+            "summary": "Update package type",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "name": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "": {
+                        "type": "string"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Package Type"
+            ],
+            "summary": "Delete package type",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/subscription_package": {
+        "get": {
+            "tags": [
+            "Subscription Package"
+            ],
+            "summary": "Get all subscription package",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "post": {
+            "tags": [
+            "Subscription Package"
+            ],
+            "summary": "Create subscription package",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "package_type": {
+                        "type": "string",
+                        "example": "{\n            \"status\": \"active\",\n            \"_id\": \"63ca3fdbd3c9595ae88b0268\",\n            \"name\": \"Gold\",\n            \"description\": \"<p>Gold</p>\",\n            \"__v\": 0\n        }"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "example": "jpg"
+                    },
+                    "qnty": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/subscription_package/{id}": {
+        "get": {
+            "tags": [
+            "Subscription Package"
+            ],
+            "summary": "Get subscription package by id",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            },
+            {
+                "name": "id",
+                "in": "path",
+                "schema": {
+                    "type": "integer"
+                },
+                "example": "123"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "put": {
+            "tags": [
+            "Subscription Package"
+            ],
+            "summary": "Update subscription package",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "package_type": {
+                        "type": "string",
+                        "example": "{\n            \"status\": \"active\",\n            \"_id\": \"63ca3fdbd3c9595ae88b0268\",\n            \"name\": \"Gold\",\n            \"description\": \"<p>Gold</p>\",\n            \"__v\": 0\n        }"
+                    },
+                    "file_type": {
+                        "type": "string",
+                        "example": "jpg"
+                    },
+                    "qnty": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "price": {
+                        "type": "integer",
+                        "example": "1"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        },
+        "delete": {
+            "tags": [
+            "Subscription Package"
+            ],
+            "summary": "Delete subscription package",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/login": {
+        "post": {
+            "tags": [
+            "Auth"
+            ],
+            "summary": "Admin login",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "test@test.test"
+                    },
+                    "password": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/register": {
+        "post": {
+            "tags": [
+            "Auth"
+            ],
+            "summary": "Admin register",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "last_name": {
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "test1@mailinator.com"
+                    },
+                    "password": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "mobile_no": {
+                        "type": "integer",
+                        "example": "12312312311"
+                    },
+                    "country": {
+                        "type": "string",
+                        "example": "{\"states\":[],\"status\":\"active\",\"_id\":\"63c0f4afd1bee19ba7ea2601\",\"country\":\"Angola\"}"
+                    },
+                    "state": {
+                        "type": "string",
+                        "example": "{\"status\":\"active\",\"_id\":\"63c6776b4774f8c0a92f99ae\",\"country_id\":\"63c0f4afd1bee19ba7ea2601\",\"states\":\"Cabinda\",\"__v\":0}"
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "binary"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/getUserDetail": {
+        "get": {
+            "tags": [
+            "Auth"
+            ],
+            "summary": "Login User Data",
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/admin/changePassword": {
+        "post": {
+            "tags": [
+            "Auth"
+            ],
+            "summary": "Change Password",
+            "requestBody": {
+            "content": {
+                "multipart/form-data": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                    "newPassword": {
+                        "type": "integer",
+                        "example": "123"
+                    },
+                    "oldPassword": {
+                        "type": "integer",
+                        "example": "123"
+                    }
+                    }
+                }
+                }
+            }
+            },
+            "parameters": [
+            {
+                "name": "Authorization",
+                "in": "header",
+                "schema": {
+                "type": "string"
+                },
+                "example": "{{BT}}"
+            }
+            ],
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/user/countries": {
+        "get": {
+            "tags": [
+            "Auth"
+            ],
+            "summary": "get all countries for register",
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        },
+        "/api/user/state_country/{country_id}": {
+        "get": {
+            "tags": [
+            "Auth"
+            ],
+            "parameters": [
+                {
+                    "name": "country_id",
+                    "in": "path",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "example": "123"
+                }
+            ],
+            "summary": "get states by country id for register",
+            "responses": {
+            "200": {
+                "description": "Successful response",
+                "content": {
+                "application/json": {}
+                }
+            }
+            }
+        }
+        }
+    }
+    }

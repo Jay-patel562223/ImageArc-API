@@ -1,0 +1,14 @@
+# Dependency directories
+/node_modules
+/.idea
+.env
+/public/basic
+/public/category
+/public/product
+/public/review
+/public/user
+
+/public/original
+/public/pdf
+/public/original_old/
+package-lock.json

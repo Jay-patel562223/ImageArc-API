@@ -1,0 +1,136 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office">
+
+
+
+<!-- <!DOCTYPE html>
+<html> -->
+<head>
+	<title>Student's profile</title>
+	<head>
+	<style type="text/css">
+		body{
+			width: 1200px;
+			margin: 0;
+			padding: 0px;
+			font-size: 16px;
+			line-height: 24px;
+			font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			color: rgb(33,33,33);
+		}
+		.report-header{
+			width: 90%;
+			/* background: rgb(178,230,212);
+			color: rgb(102,102,102); */
+			padding: 15px;
+			/* padding-left: 200px; */
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+		}
+		
+		.report-footer{
+			width: 90%;
+			/* background: rgb(178,230,212);
+			color: rgb(102,102,102); */
+			padding: 15px;
+			box-sizing: border-box;
+			display: block;
+			position: relative;
+			text-align-last: center;
+		}
+		.report-body{
+			width: 90%;
+			display: inline-block;
+			position: relative;
+			padding: 15px;
+			box-sizing: border-box;
+			vertical-align: top;
+		}
+		
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			/* border: 1px solid #dddddd; */
+			text-align: left;
+			padding: 8px;
+		}
+
+		#block_container
+		{
+			/* text-align:center; */
+		}
+		#bloc1, #bloc2
+		{
+			display:inline;
+		}
+		/* tr:nth-child(even) {
+			background-color: #dddddd;
+		} */
+	</style>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+	<!-- <ul>
+		  <li>Name: {{this.name}}</li>
+		  <li>Age: {{this.age}}</li>
+		  <li>DOB: {{this.dob}}</li>
+	  </ul> -->
+
+	<div class="report-header block_container">
+		<h1 style="text-align-last: center;">INVOICE</h1>
+		<!-- <h1 style="text-align-last: center;">IMAGE ARC</h1> -->
+		<h3 id="bloc1" style="float: left;">Order ID - 63d8ece0cc5cb98a70c8f2e0</h3>
+		<p id="bloc2" style="float: right;">Date: 1/2/2023</p>
+	</div>
+	<div class="report-body">
+		<table style="text-align-last: right;">
+			<thead style="background-color: #f7f8f9;">
+				<tr>
+					<th >Products</th>
+					<th >Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for(let i = 0; i < data.length; i++) { %>
+					<% i %>
+					<% }  %>
+			<!-- {{#each data}}
+				<tr>
+					<td >{{this.name}}</td>
+					<td >{{this.price}}</td>
+				</tr>
+			{{/each}} -->
+
+				<tr>
+					<td > </td>
+					<td>
+						<table>
+							<tr>
+								<td>Sub total</td>
+								<td>Product 1</td>
+							</tr>
+							<hr>
+							<hr>
+							<tr>
+								<td>Total </td>
+								<td>Product 1</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="report-footer ">
+		IMAGE ARC - All Rights reserved.
+	</div>
+</body>
+</html>

@@ -1,0 +1,1689 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IMAGE ARC MOBILE",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/"
+        },
+        {
+            "url": "http://52.69.195.65:3000/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Category"
+        },
+        {
+            "name": "Product"
+        },
+        {
+            "name": "Wishlist"
+        },
+        {
+            "name": "Orders"
+        },
+        {
+            "name": "Profile"
+        },
+        {
+            "name": "Reviews"
+        }
+    ],
+    "paths": {
+        "/api/user/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get all category",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getProductByCategory/{category_id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "summary": "Get Product By Category",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get all product",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/products/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "summary": "Get product by id",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/checkProductExist": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Check Product Exist",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/wishlists/toggle": {
+            "post": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "Wishlists create and delete",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63b2b3239a49d67d442e349e"
+                                    },
+                                    "product_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/wishlists/{id}": {
+            "delete": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "delete wishlists",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/wishlists/in_wishlist/{id}": {
+            "get": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "get wishlist by id",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/my-wishlists": {
+            "get": {
+                "tags": [
+                    "Wishlist"
+                ],
+                "summary": "Get all wishlists",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/orders": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Create Order",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "products[]": {
+                                        "type": "string",
+                                        "example": "[{\n            \"tag\": [\n                \"['123']\"\n            ],\n            \"product_status\": \"approved\",\n            \"status\": \"active\",\n            \"categories\": [\n                {\n                    \"status\": \"active\",\n                    \"_id\": \"63b2b3239a49d67d442e349e\",\n                    \"is_active\": true,\n                    \"name\": \"Trousers and shorts\",\n                    \"description\": \"<p>Trousers and shorts</p>\",\n                    \"image\": \"http://localhost:3000/category/Toronto_Skyline_Summer_2020.jpg\",\n                    \"__v\": 0\n                }\n            ],\n            \"_id\": \"63bff217c71f3fc488abd228\",\n            \"name\": \"test\",\n            \"description\": \"test\",\n            \"image\": \"http://localhost:3000/product/download.jpeg\",\n            \"unit\": \"JPEG\",\n            \"product_type\": \"simple\",\n            \"type\": {\n                \"settings\": {\n                    \"isHome\": true,\n                    \"layoutType\": \"classic\",\n                    \"productCard\": \"neon\"\n                }\n            },\n            \"quantity\": \"1000\",\n            \"in_stock\": \"1\",\n            \"is_taxable\": \"0\",\n            \"__v\": 0,\n            \"price\": \"10\",\n            \"sale_price\": \"10\",\n            \"base_amount\": \"10\"\n        }]"
+                                    },
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "total": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "customer_contact": {
+                                        "type": "string",
+                                        "description": "phone no",
+                                        "example": "+911231231231"
+                                    },
+                                    "payment_gateway": {
+                                        "type": "string",
+                                        "example": "STRIPE"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get  all orders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get order by id",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/GenerateInvoice/{id}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Generate Invoice",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/checkoutPay": {
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Checkout Pay STRIPE",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "type": "object",
+                                        "example": "{id:'1',card:{id:'1',last4:'4242',brand:'VISA'}}"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    },
+                                    "type":{
+                                        "type": "integer",
+                                        "example": "SUBSCRIPTION PURCHASE"
+                                    },
+                                    "payment_gateway": {
+                                        "type": "string",
+                                        "example": "STRIPE"
+                                    },
+                                    "unique_id": {
+                                        "type": "string",
+                                        "example": "ORD1234567890"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+            
+        },
+        "/api/user/changePassword": {
+            "post": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Change Password",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63995d0112ea7c2fdddd5269"
+                                    },
+                                    "newPassword": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    },
+                                    "oldPassword": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/editProfile/{id}": {
+            "put": {
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Edit Profile",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63ad3803e39e9c3e14282e0a"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "last_name": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test1@mailinator.com"
+                                    },
+                                    "password": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    },
+                                    "mobile_no": {
+                                        "type": "integer",
+                                        "example": "12312312311"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "{\"states\":[],\"status\":\"active\",\"_id\":\"63c0f4afd1bee19ba7ea2601\",\"country\":\"Angola\"}"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "example": "{\"status\":\"active\",\"_id\":\"63c6776b4774f8c0a92f99ae\",\"country_id\":\"63c0f4afd1bee19ba7ea2601\",\"states\":\"Cabinda\",\"__v\":0}"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "description": "active, inactive",
+                                        "example": "active"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/reviews": {
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "store reviews",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "order_id": {
+                                        "type": "string",
+                                        "example": "63bffa8358e00fcd43fc7c9f"
+                                    },
+                                    "product_id": {
+                                        "type": "string",
+                                        "example": "63b2b3239a49d67d442e349e"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/reviews/{id}": {
+            "put": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "update reviews",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "order_id": {
+                                        "type": "string",
+                                        "example": "63bffa8358e00fcd43fc7c9f"
+                                    },
+                                    "product_id": {
+                                        "type": "string",
+                                        "example": "63b2b3239a49d67d442e349e"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "example": "4"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "test"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getReviewById": {
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Get Review By Id",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "order_id": {
+                                        "type": "string",
+                                        "example": "63bffa8358e00fcd43fc7c9f"
+                                    },
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/subscription_package": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Get all subscription package",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/subscription_package/{id}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "63ca40c50c38455b680ca40a"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "summary": "Get subscription package by id",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/base_package": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Get all base package",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/user_subscription": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Get all user subscription",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/user_all_subscription": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "User all subscription",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/user_subscription/{id}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "63ca40c50c38455b680ca40a"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "summary": "Get user subscription by id",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/user_subscription_loggedin/{file_extension}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "parameters": [
+                    {
+                        "name": "file_extension",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "['jpg']"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "summary": "Get user subscription data by file type",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getSubscriptionCount": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file_type": {
+                                        "type": "string",
+                                        "example": "png,jpg"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Get and check Subscription Count",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/createUserSubscription": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Create user subscription",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "package_id":{
+                                        "type": "string",
+                                        "example": "63bfe26aa540c5b9a07f28cc"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "100"
+                                    },
+                                    "qnty": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "available_qnty": {
+                                        "type": "integer",
+                                        "example": "5"
+                                    },
+                                    "file_type": {
+                                        "type": "string",
+                                        "example": "JPG"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/transactions": {
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Get all transactions",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User register",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "test"
+                                    },
+                                    "last_name": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test1@mailinator.com"
+                                    },
+                                    "password": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    },
+                                    "mobile_no": {
+                                        "type": "integer",
+                                        "example": "12312312311"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "description": "string object from country list",
+                                        "example": "{\"states\":[],\"status\":\"active\",\"_id\":\"63c0f4afd1bee19ba7ea2601\",\"country\":\"Angola\"}"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "description": "string object from state list",
+                                        "example": "{\"status\":\"active\",\"_id\":\"63c6776b4774f8c0a92f99ae\",\"country_id\":\"63c0f4afd1bee19ba7ea2601\",\"states\":\"Cabinda\",\"__v\":0}"
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User login",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "testingcheckqs@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/countries": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "get all countries for register",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/state_country/{country_id}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "parameters": [
+                    {
+                        "name": "country_id",
+                        "in": "path",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "123"
+                    }
+                ],
+                "summary": "get states by country id for register",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/emailExistorNot": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Check Email Exist or Not",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/sendEmailOTP": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send email otp",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/matchEmailOTP": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Match email otp",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@gmail.com"
+                                    },
+                                    "otp": {
+                                        "type": "integer",
+                                        "example": "193668"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/resetPassword": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Reset password",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@gmail.com"
+                                    },
+                                    "otp": {
+                                        "type": "integer",
+                                        "example": "193668"
+                                    },
+                                    "password": {
+                                        "type": "integer",
+                                        "example": "123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getUserDetail": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get User Detail",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/deleteAccount": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Delete Account",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@gmail.com"
+                                    },
+                                    "otp": {
+                                        "type": "integer",
+                                        "example": "193668"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getSettings": {
+            "get": {
+                "tags": [
+                    "getSettings"
+                ],
+                "summary": "get basic Settings",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/createRazorPayOrder": {
+            "post": {
+                "tags": [
+                    "RazorPay Order"
+                ],
+                "summary": "RazorPay Order",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/createStripePI": {
+            "post": {
+                "tags": [
+                    "Stripe Payment Intent"
+                ],
+                "summary": "Stripe Payment Intent",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": "10"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/changeNotificationStatus": {
+            "post": {
+                "tags": [
+                    "Notification"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "{{BT}}"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "notification_status": {
+                                        "type": "string",
+                                        "example": "true"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "Change Notification Status",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/page/{slug}": {
+            "get": {
+                "tags": [
+                    "page"
+                ],
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "page"
+                    }
+                ],
+                "summary": "Get page by slug",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/getProductPrices": {
+            "get": {
+                "tags": [
+                    "Product Prices"
+                ],
+                "summary": "Get Product Prices",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+module.exports = {
+  AuthController: require("../Admin/AuthController"),
+  UserManagementController: require("../Admin/UserManagementController"),
+  CategoryManagementController: require("../Admin/CategoryManagementController"),
+  ContactUsController: require("../Admin/ContactUsController"),
+  StaticPageManagement: require("../Admin/StaticPageManagement"),
+  SettingsController: require("../Admin/SettingsController"),
+  ProductController: require("../Admin/ProductController"),
+  ProductPriceController: require("../Admin/ProductPriceController"),
+  ProductDpiController: require("../Admin/ProductDpiController"),
+  OrderController: require("../Admin/OrderController"),
+  CountryController: require("../Admin/CountryController"),
+  StateController: require("../Admin/StateController"),
+  PackageTypeController: require("../Admin/PackageTypeController"),
+  SubscriptionPackageController: require("../Admin/SubscriptionPackageController"),
+  TransactionController: require("../Admin/TransactionController"),
+  SocialMediaController: require("./SocialMediaController"),
+};
